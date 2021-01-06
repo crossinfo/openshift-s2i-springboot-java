@@ -37,9 +37,9 @@ RUN (curl -fSL https://www-eu.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binar
     mkdir -p $HOME/.m2 && chmod -R a+rwX $HOME/.m2
 
 # Install Gradle 4.4
-ARG GRADLE_VER
-ENV GRADLE_VERSION $GRADLE_VER
-RUN curl -fSL https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip -o /tmp/gradle-$GRADLE_VERSION-bin.zip && \
+#ARG GRADLE_VER
+#ENV GRADLE_VERSION $GRADLE_VER
+#RUN curl -fSL https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip -o /tmp/gradle-$GRADLE_VERSION-bin.zip && \
     unzip /tmp/gradle-$GRADLE_VERSION-bin.zip -d /usr/local/ && \
     rm /tmp/gradle-$GRADLE_VERSION-bin.zip && \
     mv /usr/local/gradle-$GRADLE_VERSION /usr/local/gradle && \
@@ -47,7 +47,8 @@ RUN curl -fSL https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-b
     mkdir -p $HOME/.gradle && chmod -R a+rwX $HOME/.gradle
 
 # Set the location of the mvn and gradle bin directories on search path
-ENV PATH=/usr/local/bin/mvn:/usr/local/bin/gradle:$PATH
+ENV PATH=/usr/local/bin/mvn:$PATH
+#ENV PATH=/usr/local/bin/mvn:/usr/local/bin/gradle:$PATH
 
 # Set the default build type to 'Maven'
 ENV BUILD_TYPE=Maven
