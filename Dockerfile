@@ -22,8 +22,8 @@ RUN yum -y update; \
     yum install sudo -y; \
     yum clean all -y
 
-# Install OpenJDK 1.8, create required directories.
-RUN yum install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel && \
+# Install OpenJDK 11, create required directories.
+RUN yum install -y java-11-openjdk java-11-openjdk-devel && \
     yum clean all -y && \
     mkdir -p /opt/openshift
 
