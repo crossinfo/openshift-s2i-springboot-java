@@ -21,12 +21,11 @@ execute_maven_build()
   # Execute the actual build
   mvn -e $MAVEN_ARGS
   ERR=$?
-  echo $ERR
-  #if [ $ERR -ne 0 ]; then
-  #  echo "Aborting due to error code $ERR from Maven build"
-  #  exit $ERR
-  #fi
-
+  if [ $ERR -ne 0 ]; then
+    echo "Aborting due to error code $ERR from Maven build"
+    exit $ERR
+  fi
+  ls
   # Copy built artifacts (if any!) from the target/ directory
   # to the $DEPLOY_DIR directory for later deployment
   cp -v $HOME/target/*.* $DEPLOY_DIR 2> /dev/null
