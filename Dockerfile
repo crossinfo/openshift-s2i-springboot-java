@@ -19,13 +19,19 @@ RUN yum -y update; \
     yum install tar -y; \
     yum install unzip -y; \
     yum install ca-certificates -y; \
-    yum install sudo -y; \
-    yum clean all -y
+    yum install sudo -y; 
 
 # Install OpenJDK 11, create required directories.
 RUN yum install -y java-11-openjdk java-11-openjdk-devel && \
-    yum clean all -y && \
     mkdir -p /opt/openshift
+    
+# Install consul
+RUN yum install -y yum-utils && \
+      yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo && \
+      yum -y install consul
+      
+# clean yum
+RUN yum clean all -y
 
 # Install Maven 3.5.2
 ARG MAVEN_VER
