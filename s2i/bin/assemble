@@ -21,6 +21,7 @@ execute_maven_build()
   # Execute the actual build
   mvn -e $MAVEN_ARGS
   ERR=$?
+  echo $ERR
   #if [ $ERR -ne 0 ]; then
   #  echo "Aborting due to error code $ERR from Maven build"
   #  exit $ERR
