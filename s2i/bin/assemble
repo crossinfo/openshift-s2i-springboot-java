@@ -30,7 +30,7 @@ execute_maven_build()
   # to the $DEPLOY_DIR directory for later deployment
   ls -la $HOME
   echo $DEPLOY_DIR
-  cp -v $HOME/target/*.* $DEPLOY_DIR 2> /dev/null
+  cp -v $HOME/vt-backend-ucenter-server/target/*.* $DEPLOY_DIR 2> /dev/null
 echo "11111"
   # Clean up after Maven run ....
   mvn clean
