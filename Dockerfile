@@ -41,7 +41,7 @@ RUN (curl -fSL https://www-eu.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binar
     mv /usr/local/apache-maven-$MAVEN_VERSION /usr/local/maven && \
     ln -sf /usr/local/maven/bin/mvn /usr/local/bin/mvn && \
     mkdir -p $HOME/.m2 && chmod -R a+rwX $HOME/.m2
-
+COPY m2/setting.xml $HOME/.m2/
 # Set the location of the mvn and gradle bin directories on search path
 ENV PATH=/usr/local/bin/mvn:$PATH
 
