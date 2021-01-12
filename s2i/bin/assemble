@@ -39,36 +39,6 @@ execute_maven_build()
   fi
 }
 
-execute_gradle_build()
-{
-  echo "---> Building application using Gradle ..."
-
-  GRADLE_ARGS="assemble ${GRADLE_ARGS_APPEND}"
-  echo "---> Found gradle.build. Attempting to build with 'gradle -s ${GRADLE_ARGS}'"
-
-  echo "---> Using $(gradle --version)"
-
-  # Execute the actual build
-  gradle -s $GRADLE_ARGS
-
-  ERR=$?
-  if [ $ERR -ne 0 ]; then
-    echo "Aborting due to error code $ERR from Gradle build"
-    exit $ERR
-  fi
-
-  # Copy built artifacts (if any!) from the builds/libs directory
-  # to the $DEPLOY_DIR directory for later deployment
-  cp -v $HOME/build/libs/*.* $DEPLOY_DIR 2> /dev/null
-
-  # Clean up after Gradle run ....
-  gradle clean
-
-  if [ -d "$HOME/.gradle/caches" ]; then
-    rm -rf $HOME/.gradle/caches
-  fi
-}
-
 echo "--> S2I:assemble step start ..."
 echo "--> Executing script as user=" + `id`
 
@@ -97,8 +67,6 @@ ls -la $HOME
 echo "---> S2I:assemble Build type=$BUILD_TYPE ..."
 if [ $BUILD_TYPE = "Maven" ] && [ -f "$HOME/pom.xml" ]; then
   execute_maven_build
-elif [ $BUILD_TYPE = "Gradle" ] && [ -f "$HOME/build.gradle" ]; then
-  execute_gradle_build
 else
   # Copy the fat jar to the deployment directory
   cp -v $HOME/*.jar $DEPLOY_DIR 2> /dev/null
