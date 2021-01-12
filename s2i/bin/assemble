@@ -19,7 +19,7 @@ execute_maven_build()
   echo "---> Using $(mvn --version)"
 
   # Execute the actual build
-  mvn -e $MAVEN_ARGS
+  #mvn -e $MAVEN_ARGS
 
   ERR=$?
   if [ $ERR -ne 0 ]; then
