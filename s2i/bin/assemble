@@ -19,13 +19,12 @@ execute_maven_build()
   echo "---> Using $(mvn --version)"
 
   # Execute the actual build
-  #mvn -e $MAVEN_ARGS
-  exit 0
+  mvn -e $MAVEN_ARGS
   ERR=$?
-  if [ $ERR -ne 0 ]; then
-    echo "Aborting due to error code $ERR from Maven build"
-    exit $ERR
-  fi
+  #if [ $ERR -ne 0 ]; then
+  #  echo "Aborting due to error code $ERR from Maven build"
+  #  exit $ERR
+  #fi
 
   # Copy built artifacts (if any!) from the target/ directory
   # to the $DEPLOY_DIR directory for later deployment
