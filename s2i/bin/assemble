@@ -28,7 +28,7 @@ execute_maven_build()
   
   # Copy built artifacts (if any!) from the target/ directory
   # to the $DEPLOY_DIR directory for later deployment
-  target_dir=$HOME+$TARGET_DIR
+  target_dir=$HOME$TARGET_DIR
   echo $target_dir
   cp -v $target_dir/*.* $DEPLOY_DIR 2> /dev/null
   # Clean up after Maven run ....
