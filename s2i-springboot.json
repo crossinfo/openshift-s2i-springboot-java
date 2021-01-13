@@ -46,6 +46,11 @@
       "name": "APP_OPTIONS",
       "displayName": "Application arguments",
       "description": "Arguments to be passed to the Springboot application (at runtime)"
+    },
+    {
+      "name": "TARGET_DIR",
+      "displayName": "target dir",
+      "description": "target jar dir"
     }
   ],
   "objects": [
