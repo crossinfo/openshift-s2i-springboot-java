@@ -30,7 +30,7 @@ execute_maven_build()
   # to the $DEPLOY_DIR directory for later deployment
   target_dir=$HOME$TARGET_DIR
   echo $target_dir
-  cp -v $target_dir/*.* $DEPLOY_DIR 2> /dev/null
+  cp -v $target_dir/target/*.* $DEPLOY_DIR 2> /dev/null
   # Clean up after Maven run ....
   mvn clean
   if [ -d "$HOME/.m2/repository" ]; then
