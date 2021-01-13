@@ -28,13 +28,11 @@ execute_maven_build()
   
   # Copy built artifacts (if any!) from the target/ directory
   # to the $DEPLOY_DIR directory for later deployment
-  ls -la $HOME
-  echo $DEPLOY_DIR
-  cp -v $HOME/vt-backend-ucenter-server/target/*.* $DEPLOY_DIR 2> /dev/null
-echo "11111"
+  target_dir=$HOME+$TARGET_DIR
+  echo $target_dir
+  cp -v $target_dir/*.* $DEPLOY_DIR 2> /dev/null
   # Clean up after Maven run ....
   mvn clean
-echo "2222"
   if [ -d "$HOME/.m2/repository" ]; then
     rm -rf $HOME/.m2/repository
   fi
@@ -72,7 +70,6 @@ else
   # Copy the fat jar to the deployment directory
   cp -v $HOME/*.jar $DEPLOY_DIR 2> /dev/null
 fi
-echo "3333"
 # For Spring Boot, there should only be 1 fat jar
 if [ $(ls $DEPLOY_DIR/*.jar | wc -l) -eq 1 ]; then
   mv $DEPLOY_DIR/*.jar $DEPLOY_DIR/app.jar
