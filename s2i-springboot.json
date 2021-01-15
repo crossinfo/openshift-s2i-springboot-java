@@ -20,7 +20,7 @@
     {
       "description": "Git branch/tag reference",
       "name": "GIT_REF",
-      "value": "master"
+      "value": "cvt"
     },
     {
       "description": "Git Directory",
@@ -35,7 +35,8 @@
     {
       "name": "MAVEN_ARGS_APPEND",
       "displayName": "Maven arguments to append",
-      "description": "Append Maven arguments"
+      "description": "Append Maven arguments",
+"value":"3.6.3"
     },
     {
       "name": "GRADLE_ARGS_APPEND",
