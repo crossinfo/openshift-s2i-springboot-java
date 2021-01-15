@@ -32,7 +32,7 @@ under the License.
  |  2. Global Level. This settings.xml file provides configuration for all Maven
  |                 users on a machine (assuming they're all using the same Maven
  |                 installation). It's normally provided in
- |                 ${maven.conf}/settings.xml.
+ |                 ${maven.home}/conf/settings.xml.
  |
  |                 NOTE: This location can be overridden with the CLI option:
  |
@@ -52,6 +52,7 @@ under the License.
    | Default: ${user.home}/.m2/repository
   <localRepository>/path/to/local/repo</localRepository>
   -->
+   <!-- <localRepository>~/maven/repo</localRepository> -->
 
   <!-- interactiveMode
    | This will determine whether maven prompts you when it needs input. If set to false,
@@ -130,6 +131,13 @@ under the License.
       <passphrase>optional; leave empty if not used.</passphrase>
     </server>
     -->
+    <server>
+      <id>nexus</id>
+      <username>developer</username>
+       <password>123456</password>
+    </server>
+
+
   </servers>
 
   <!-- mirrors
@@ -156,7 +164,12 @@ under the License.
       <url>http://my.repository.com/repo/path</url>
     </mirror>
      -->
-     <mirror>  
+     <mirror>
+      <id>nexus</id>
+      <mirrorOf>*</mirrorOf>
+      <url>https://maven.bizfocus.net/repository/maven-public/</url>
+    </mirror>
+         <mirror>  
       <id>alimaven</id>  
       <name>aliyun maven</name>  
       <url>http://maven.aliyun.com/nexus/content/groups/public/</url>  
@@ -250,14 +263,40 @@ under the License.
       </properties>
     </profile>
     -->
+    <profile>
+      <id>nexus</id>
+    <repositories>
+    <repository>
+      <id>public</id>
+      <name>Public Repositories</name>
+      <url>https://maven.bizfocus.net/repository/maven-public/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    </repositories>
+     <pluginRepositories>
+        <pluginRepository>
+            <id>public</id>
+            <name>Public Repositories</name>
+            <url>https://maven.bizfocus.net/repository/maven-public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+    </profile>
+
   </profiles>
 
-  <!-- activeProfiles
-   | List of profiles that are active for all builds.
-   |
-  <activeProfiles>
-    <activeProfile>alwaysActiveProfile</activeProfile>
-    <activeProfile>anotherAlwaysActiveProfile</activeProfile>
-  </activeProfiles>
-  -->
+<activeProfiles>
+    <activeProfile>nexus</activeProfile>
+ </activeProfiles>
+
 </settings>
