@@ -34,8 +34,7 @@ RUN yum install -y yum-utils && \
 RUN yum clean all -y
 
 # Install Maven 3.5.2
-ARG MAVEN_VER
-ENV MAVEN_VERSION $MAVEN_VER
+ENV MAVEN_VERSION=3.6.3
 RUN (curl -fSL https://www-eu.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz | \
     tar -zx -C /usr/local) && \
     mv /usr/local/apache-maven-$MAVEN_VERSION /usr/local/maven && \
