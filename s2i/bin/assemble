@@ -70,6 +70,14 @@ else
   # Copy the fat jar to the deployment directory
   cp -v $HOME/*.jar $DEPLOY_DIR 2> /dev/null
 fi
+
+#
+if [ "$(ls -A /opt/s2i/destination/artifacts/ 2>/dev/null)" ]; then
+  echo "---> Restoring build artifacts..."
+  # ls -la /opt/s2i/destination/artifacts/home/deploy/.m2
+  mv /opt/s2i/destination/artifacts/home/deploy/.m2 $HOME/.m2
+fi
+
 # For Spring Boot, there should only be 1 fat jar
 if [ $(ls $DEPLOY_DIR/*.jar | wc -l) -eq 1 ]; then
   mv $DEPLOY_DIR/*.jar $DEPLOY_DIR/app.jar
