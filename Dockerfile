@@ -3,7 +3,7 @@
 # springboot-java
 #
 FROM openshift/base-centos7
-MAINTAINER Ganesh Radhakrishnan ganrad01@gmail.com
+LABEL maintainer Yann
 # HOME in base image is /opt/app-root/src
 
 # Builder version
@@ -26,9 +26,9 @@ RUN yum install -y java-11-openjdk java-11-openjdk-devel && \
     mkdir -p /opt/openshift
     
 # Install consul
-RUN yum install -y yum-utils && \
-      yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo && \
-      yum -y install consul
+# RUN yum install -y yum-utils && \
+#       yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo && \
+#       yum -y install consul
       
 # clean yum
 RUN yum clean all -y

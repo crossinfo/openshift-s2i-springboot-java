@@ -8,4 +8,5 @@
 #	https://github.com/openshift/source-to-image/blob/master/docs/builder_image.md
 #
 # tar cf - <list of files and folders>
+echo "--> S2I:save-artifacts step start ..."
 tar cf - $HOME/.m2
