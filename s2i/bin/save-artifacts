@@ -15,7 +15,8 @@ ls -la ${HOME}
 pushd ${HOME} >/dev/null
 # ${HOME}/.m2 is the maven repo dir
 # {$HOME}/target is the class files from the previous build
+pwd
 tar cf - .m2
-
+ls
 
 popd >/dev/null
