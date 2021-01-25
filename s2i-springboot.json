@@ -36,7 +36,7 @@
       "name": "MAVEN_ARGS_APPEND",
       "displayName": "Maven arguments to append",
       "description": "Append Maven arguments",
-"value":"3.6.3"
+      "value": "3.6.3"
     },
     {
       "name": "GRADLE_ARGS_APPEND",
@@ -107,37 +107,37 @@
         "source": {
           "git": {
             "uri": "${GIT_URI}",
-	    "ref": "${GIT_REF}"
+            "ref": "${GIT_REF}"
           },
           "secrets": [],
-	  "contextDir": "${CONTEXT_DIR}",
+          "contextDir": "${CONTEXT_DIR}",
           "type": "Git"
         },
         "strategy": {
           "sourceStrategy": {
             "from": {
               "kind": "ImageStreamTag",
-	      "name": "springboot-java:latest"
+              "name": "springboot-java:latest"
             },
-	    "env": [
-		{
-		  "name": "BUILD_TYPE",
-		  "value": "${BUILD_TYPE}"
-		}
-	    ]
+            "env": [
+              {
+                "name": "BUILD_TYPE",
+                "value": "${BUILD_TYPE}"
+              }
+            ]
           },
           "type": "Source"
         },
         "triggers": [
           {
             "github": {
-		"secret": "secret"
+              "secret": "secret"
             },
             "type": "GitHub"
           },
           {
             "generic": {
-		"secret": "secret"
+              "secret": "secret"
             },
             "type": "Generic"
           },
@@ -206,7 +206,16 @@
                   }
                 ],
                 "resources": {},
-                "terminationMessagePath": "/dev/termination-log"
+                "terminationMessagePath": "/dev/termination-log",
+                "volumeMounts":[{"name":"m2-pvc","mountPath:":"${HOME}/.m2"}]
+              }
+            ],
+            "volumes": [
+              {
+                "name": "m2-pvc",
+                "persistentVolumeClaim": {
+                  "claimName": "cvt-mavpvc"
+                }
               }
             ],
             "dnsPolicy": "ClusterFirst",
