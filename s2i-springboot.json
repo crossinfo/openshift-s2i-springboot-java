@@ -119,6 +119,7 @@
               "kind": "ImageStreamTag",
               "name": "springboot-java:latest"
             },
+            "incremental":true,
             "env": [
               {
                 "name": "BUILD_TYPE",
@@ -206,8 +207,7 @@
                   }
                 ],
                 "resources": {},
-                "terminationMessagePath": "/dev/termination-log",
-                "volumeMounts":[{"name":"m2-pvc","mountPath:":"/opt/app-root/src/.m2"}]
+                "terminationMessagePath": "/dev/termination-log"
               }
             ],
             "volumes": [
