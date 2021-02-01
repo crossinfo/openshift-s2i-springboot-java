@@ -219,14 +219,6 @@
                 "terminationMessagePath": "/dev/termination-log"
               }
             ],
-            "volumes": [
-              {
-                "name": "m2-pvc",
-                "persistentVolumeClaim": {
-                  "claimName": "cvt-mavpvc"
-                }
-              }
-            ],
             "dnsPolicy": "ClusterFirst",
             "restartPolicy": "Always",
             "securityContext": {},
