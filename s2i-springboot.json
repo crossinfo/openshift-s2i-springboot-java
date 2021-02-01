@@ -9,7 +9,7 @@
       "name": "APP_NAME",
       "displayName": "Application Name",
       "description": "Application name",
-      "value": ""
+      "value": "backend-"
     },
     {
       "name": "GIT_URI",
