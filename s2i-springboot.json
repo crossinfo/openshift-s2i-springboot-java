@@ -46,7 +46,8 @@
     {
       "name": "APP_OPTIONS",
       "displayName": "Application arguments",
-      "description": "Arguments to be passed to the Springboot application (at runtime)"
+      "description": "Arguments to be passed to the Springboot application (at runtime)",
+      "value":"-Dspring.profiles.active=cvt"
     },
     {
       "name": "TARGET_DIR",
@@ -124,6 +125,10 @@
               {
                 "name": "BUILD_TYPE",
                 "value": "${BUILD_TYPE}"
+              },
+              {
+                "name":"TARGET_DIR",
+                "value":"${TARGET_DIR}"
               }
             ]
           },
