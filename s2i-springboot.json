@@ -129,6 +129,10 @@
               {
                 "name":"TARGET_DIR",
                 "value":"${TARGET_DIR}"
+              },
+              {
+                "name":"APP_OPTIONS",
+                "value":"${APP_OPTIONS}"
               }
             ]
           },
