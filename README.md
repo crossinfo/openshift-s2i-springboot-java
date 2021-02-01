@@ -94,7 +94,7 @@ This will run the *save-artifacts* script which includes the code to backup the 
 1.  Use the command below to create the S2I builder image and save it in the integrated docker registry.  The command below tags the builder image to the current project in the integrated registry.
 
 ```
-oc new-build --strategy=docker --name=springboot-java https://github.com/ganrad/openshift-s2i-springboot-java.git
+oc new-build --strategy=docker --name=springboot-java https://github.com/crossinfo/openshift-s2i-springboot-java.git
 ```
 
 2.  Download the *s2i-springboot.json* template file from this repository and save it on your local machine where you have OpenShift CLI tools (oc binary) installed. Then use the command below to upload the template into your current project/namespace.
