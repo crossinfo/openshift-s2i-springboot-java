@@ -47,7 +47,8 @@ ENV PATH=/usr/local/bin/mvn:$PATH
 # Set the default build type to 'Maven'
 ENV BUILD_TYPE=Maven
 
-ENV TARGET_DIR $TARGET_DIR
+ENV TARGET_DIR=$TARGET_DIR
+ENV APP_OPTIONS=$APP_OPTIONS
 # Drop the root user and make the content of /opt/openshift owned by user 1001
 RUN chown -R 1001:1001 /opt/openshift /opt/app-root/src
 
