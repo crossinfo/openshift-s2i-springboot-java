@@ -52,7 +52,8 @@
     {
       "name": "TARGET_DIR",
       "displayName": "target dir",
-      "description": "target jar dir"
+      "description": "target jar dir",
+      "value":"/vt-backend-study-server"
     }
   ],
   "objects": [
