@@ -65,7 +65,7 @@ ls -la $HOME
 
 echo "---> S2I:assemble Build type=$BUILD_TYPE ..."
 if [ $BUILD_TYPE = "Maven" ] && [ -f "$HOME/pom.xml" ]; then
-  execute_maven_build
+  #execute_maven_build
 else
   # Copy the fat jar to the deployment directory
   cp -v $HOME/*.jar $DEPLOY_DIR 2> /dev/null
