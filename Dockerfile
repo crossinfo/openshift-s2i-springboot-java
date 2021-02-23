@@ -27,7 +27,8 @@ RUN yum install -y java-11-openjdk java-11-openjdk-devel && \
 
 # location
 # RUN cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+# RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+RUN ENV TZ Asia/Shanghai
 
 # Chinese
 RUN yum -y groupinstall "Fonts"    
