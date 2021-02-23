@@ -25,17 +25,20 @@ RUN yum -y update; \
 RUN yum install -y java-11-openjdk java-11-openjdk-devel && \
     mkdir -p /opt/openshift
 
+# location
+# RUN cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+
 # Chinese
 RUN yum -y groupinstall "Fonts"    
 RUN yum install -y kde-l10n-Chinese
 RUN yum reinstall -y glibc-common
 RUN localedef -c -f UTF-8 -i zh_CN zh_CN.UFT-8
-RUN echo 'LC_ALL="zh_CN.UTF-8"' > /etc/locale.conf && source /etc/locale.conf
-RUN echo "export LC_ALL=zh_CN.UTF-8" >> /etc/profile && source /etc/profile
+RUN echo 'LANG="zh_CN.UTF-8"' > /etc/locale.conf && source /etc/locale.conf
+# RUN echo "export LC_ALL=zh_CN.UTF-8" >> /etc/profile && source /etc/profile
 ENV LANG=zh_CN.UTF-8 \
     LC_ALL=zh_CN.UTF-8
-# location
-RUN cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+
 
 # Install consul
 # RUN yum install -y yum-utils && \
