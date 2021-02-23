@@ -26,7 +26,7 @@ RUN yum install -y java-11-openjdk java-11-openjdk-devel && \
     mkdir -p /opt/openshift
 
 # Chinese
-RUN yum groupinstall "Fonts"  
+RUN yum -y groupinstall "Fonts"    
 RUN echo "export LANG=\"zh_CN.UTF-8\"" >> /etc/profile
 # Install consul
 # RUN yum install -y yum-utils && \
