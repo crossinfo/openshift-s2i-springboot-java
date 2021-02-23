@@ -32,13 +32,19 @@ ENV TZ Asia/Shanghai
 
 # Chinese
 RUN yum -y groupinstall "Fonts"    
-RUN yum install -y kde-l10n-Chinese
-RUN yum reinstall -y glibc-common
-RUN localedef -c -f UTF-8 -i zh_CN zh_CN.UFT-8
-RUN echo 'LANG="zh_CN.UTF-8"' > /etc/locale.conf && source /etc/locale.conf
+
+RUN yum install kde-l10n-Chinese -y
+RUN yum install glibc-common -y
+RUN localedef -c -f UTF-8 -i zh_CN zh_CN.utf8
+ENV LC_ALL zh_CN.UTF-8
+
+#RUN yum install -y kde-l10n-Chinese
+#RUN yum reinstall -y glibc-common
+#RUN localedef -c -f UTF-8 -i zh_CN zh_CN.UFT-8
+#RUN echo 'LANG="zh_CN.UTF-8"' > /etc/locale.conf && source /etc/locale.conf
 # RUN echo "export LC_ALL=zh_CN.UTF-8" >> /etc/profile && source /etc/profile
-ENV LANG=zh_CN.UTF-8 \
-    LC_ALL=zh_CN.UTF-8
+#ENV LANG=zh_CN.UTF-8 \
+ #   LC_ALL=zh_CN.UTF-8
 
 # Install consul
 # RUN yum install -y yum-utils && \
