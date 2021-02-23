@@ -1,6 +1,6 @@
 # Create a Spring Boot Application S2I builder image for OpenShift CP v3.6+
 
-## A. Creating the S2I builder image and testing it.
+## A. Creating the S2I builder image and testing it. 
 
 **NOTE:**
 If you only want to use this S2I builder image to build and deploy your Spring Boot Java Application, then you can skip this step and go to Step [B].
