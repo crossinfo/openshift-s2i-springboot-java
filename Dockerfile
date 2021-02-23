@@ -30,7 +30,7 @@ RUN yum -y groupinstall "Fonts"
 RUN yum install -y kde-l10n-Chinese
 RUN yum reinstall -y glibc-common
 RUN localedef -c -f UTF-8 -i zh_CN zh_CN.UFT-8
-RUN echo 'export LANG="zh_CN.UTF-8"' >> /etc/locale.conf
+RUN echo 'LANG="zh_CN.UTF-8"' > /etc/locale.conf
 RUN source /etc/locale.conf
 ENV LC_ALL zh_CN.UTF-8
 
