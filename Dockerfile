@@ -28,6 +28,10 @@ RUN yum install -y java-11-openjdk java-11-openjdk-devel && \
 # Chinese
 RUN yum -y groupinstall "Fonts"    
 RUN echo "export LANG=\"zh_CN.UTF-8\"" >> /etc/profile
+
+# location
+RUN cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+
 # Install consul
 # RUN yum install -y yum-utils && \
 #       yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo && \
