@@ -64,12 +64,12 @@ echo "---> Copied application source to $HOME ..."
 ls -la $HOME
 
 echo "---> S2I:assemble Build type=$BUILD_TYPE ..."
-if [ $BUILD_TYPE = "Maven" ] && [ -f "$HOME/pom.xml" ]; then
+#if [ $BUILD_TYPE = "Maven" ] && [ -f "$HOME/pom.xml" ]; then
   #execute_maven_build
-else
+#else
   # Copy the fat jar to the deployment directory
-  cp -v $HOME/*.jar $DEPLOY_DIR 2> /dev/null
-fi
+ # cp -v $HOME/*.jar $DEPLOY_DIR 2> /dev/null
+#fi
 
 #
 if [ "$(ls -A /opt/s2i/destination/artifacts/ 2>/dev/null)" ]; then
@@ -79,10 +79,10 @@ if [ "$(ls -A /opt/s2i/destination/artifacts/ 2>/dev/null)" ]; then
 fi
 
 # For Spring Boot, there should only be 1 fat jar
-if [ $(ls $DEPLOY_DIR/*.jar | wc -l) -eq 1 ]; then
-  mv $DEPLOY_DIR/*.jar $DEPLOY_DIR/app.jar
-  [ ! -f $DEPLOY_DIR/app.jar ] && echo "Application could not be properly built." && exit 1 
-  echo "---> Application deployed successfully.  jar file is located in $DEPLOY_DIR/app.jar"
-else
-  exit 1
-fi
+#if [ $(ls $DEPLOY_DIR/*.jar | wc -l) -eq 1 ]; then
+#  mv $DEPLOY_DIR/*.jar $DEPLOY_DIR/app.jar
+#  [ ! -f $DEPLOY_DIR/app.jar ] && echo "Application could not be properly built." && exit 1 
+#  echo "---> Application deployed successfully.  jar file is located in $DEPLOY_DIR/app.jar"
+#else
+#  exit 1
+#fi
