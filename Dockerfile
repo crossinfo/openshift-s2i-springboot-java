@@ -32,8 +32,8 @@ RUN yum reinstall -y glibc-common
 RUN localedef -c -f UTF-8 -i zh_CN zh_CN.UFT-8
 RUN echo 'LANG="zh_CN.UTF-8"' > /etc/locale.conf && source /etc/locale.conf
 RUN echo "export LC_ALL=zh_CN.UTF-8" >> /etc/profile && source /etc/profile
-RUN source /etc/locale.conf
-
+ENV LANG=zh_CN.UTF-8 \
+    LC_ALL=zh_CN.UTF-8
 # location
 RUN cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
