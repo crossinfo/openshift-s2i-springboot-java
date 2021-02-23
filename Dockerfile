@@ -24,7 +24,10 @@ RUN yum -y update; \
 # Install OpenJDK 11, create required directories.
 RUN yum install -y java-11-openjdk java-11-openjdk-devel && \
     mkdir -p /opt/openshift
-    
+
+# Chinese
+RUN yum -y groupinstall chinese-support   
+RUN echo "export LANG=\"zh_CN.UTF-8\"" >> /etc/profile
 # Install consul
 # RUN yum install -y yum-utils && \
 #       yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo && \
